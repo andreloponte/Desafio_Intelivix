@@ -7,5 +7,5 @@ class Urls(models.Model):
     pub_date = models.DateTimeField(auto_now=True)
     contador = models.IntegerField(default=0)
  
-def __str__(self):
-    return self.url_original
+    def __str__(self):
+        return self.url_original

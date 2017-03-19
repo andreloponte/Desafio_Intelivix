@@ -1,5 +1,6 @@
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render, render_to_response, get_object_or_404
 import random, string, json
+from django.utils import timezone
 from aabrl.models import Urls
 from django.http import HttpResponseRedirect, HttpResponse
 from django.conf import settings
@@ -24,7 +25,8 @@ def url_encolhida(request):
         b.save()
  
         response_data = {}
-        response_data['url'] = settings.SITE_URL + "/" + encurt_id
+#        response_data['url'] = settings.SITE_URL + "/" + encurt_id
+        response_data['url'] = "aabrl.us/" + encurt_id
         return HttpResponse(json.dumps(response_data),  content_type="application/json")
     return HttpResponse(json.dumps({"Erro": "Alguma coisa deu errada!"}), content_type="application/json")
  
@@ -37,3 +39,9 @@ def get_short_code():
             temp = Urls.objects.get(pk=encurt_id)
         except:
             return encurt_id
+
+def url_list(request):
+#    nome = request.SHOW.get("busca", '')
+#    if not (nome == ''):
+    urls = Urls.objects.filter(pub_date__lte=timezone.now()).order_by('pub_date')
+    return render(request, 'aabrl/listaurls.html', {'urls':urls})

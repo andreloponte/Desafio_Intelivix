@@ -23,7 +23,6 @@ def url_encolhida(request):
         encurt_id = get_short_code()
         b = Urls(url_original=url, encurt_id=encurt_id)
         b.save()
- 
         response_data = {}
 #        response_data['url'] = settings.SITE_URL + "/" + encurt_id
         response_data['url'] = "aabrl.us/" + encurt_id
@@ -40,6 +39,17 @@ def get_short_code():
         except:
             return encurt_id
 
+#class ListaUrls(ListView):
+#    template_name = 'listaurls.html'
+#    model = Urls
+#    context_object_name = 'urls'
+#    def url_list(self):
+#        url = Urls.objects.all()
+#        q = self.request.GET.get('pesquisar_por')
+
+#        if q is not None:
+#            url = url.filter(url_original__icontains=q)
+#        return url
 def url_list(request):
 #    nome = request.SHOW.get("busca", '')
 #    if not (nome == ''):

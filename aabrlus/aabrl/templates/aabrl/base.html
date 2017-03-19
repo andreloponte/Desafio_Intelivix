@@ -22,18 +22,6 @@
 				 dataType: 'json'
 		 	 });
 		  });
-//		  $('#submitButton2').click(function() {
-//			 $.ajax({
-//				 type: "SHOW",
-//				 url: "/listaurls/",
-//				 data: {
-//					 'busca' : $('#busca').val(),
-//					 'csrfmiddlewaretoken' : $("input[name=csrfmiddlewaretoken]").val()
-//			 	 },
-//				 success: returnSuccess,
-//				 dataType: 'json'
-//		 	 });
-//		  });
 	});
 	function returnSuccess(data, textStatus, jqXHR) {
 		 if(data.url) {
@@ -47,7 +35,7 @@
     <body>
 	<div id="wrap">
 		<header>
-			<h1><a href="{% url 'aabrl:home' %}">Encurtador de URL de André Loponte</a>
+			<h2><a href="{% url 'aabrl:home' %}">Encurtador de URL de André Loponte</a>
 		</header>
 		  
 		<div id="content">
